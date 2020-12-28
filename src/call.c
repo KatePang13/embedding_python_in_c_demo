@@ -4,8 +4,7 @@
 static int numargs=0;
 
 /* Return the number of arguments of the application command line */
-static PyObject*
-emb_numargs(PyObject *self, PyObject *args)
+static PyObject* emb_numargs(PyObject *self, PyObject *args)
 {
     if(!PyArg_ParseTuple(args, ":numargs"))
         return NULL;
@@ -14,8 +13,7 @@ emb_numargs(PyObject *self, PyObject *args)
 
 //声明 module emb 方法列表
 static PyMethodDef EmbMethods[] = {
-    {"numargs", emb_numargs, METH_VARARGS,
-     "Return the number of arguments received by the process."},
+    {"numargs", emb_numargs, METH_VARARGS, "Return the number of arguments received by the process."},
     {NULL, NULL, 0, NULL}
 };
 
@@ -25,14 +23,13 @@ static PyModuleDef EmbModule = {
     NULL, NULL, NULL, NULL
 };
 
-static PyObject*
-PyInit_emb(void)
+//创建 module 对象
+static PyObject* PyInit_emb(void)
 {
     return PyModule_Create(&EmbModule);
 }
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
     PyObject *pName, *pModule, *pFunc;
     PyObject *pArgs, *pValue;
